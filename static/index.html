@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>Backbone Socket.io D3 Chat</title>
+  <link href="static/css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <section id="chatapp">
+      <h2>chat app</h2>
+      <input type="text" name="username" id="username"
+        placeholder="Enter your name..." autofocus>
+      <ul id="chatlog"></ul>
+      <input type="text" name="message" id="message"
+        placeholder="Type and press Enter to chat...">
+    </section>
+
+    <script src="static/bower_components/jquery/dist/jquery.js"></script>
+    <script src="static/bower_components/underscore/underscore.js"></script>
+    <script src="static/bower_components/socket.io-client/socket.io.js"></script>
+    <script src="static/bower_components/backbone/backbone.js"></script>
+    <script src="static/bower_components/backbone.iobind/dist/backbone.iosync.js"></script>
+    <script src="static/bower_components/backbone.iobind/dist/backbone.iobind.js"></script>
+
+    <script>window.socket = io();</script>
+
+    <script src="static/js/models/message.js"></script>
+    <script src="static/js/collections/messages.js"></script>
+    <script src="static/js/views/message-view.js"></script>
+    <script src="static/js/views/app-view.js"></script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>

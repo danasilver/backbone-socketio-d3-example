@@ -1,0 +1,9 @@
+# OS X
+.DS_Store
+
+# Package Manger
+node_modules
+bower_components
+
+# DB
+*.db

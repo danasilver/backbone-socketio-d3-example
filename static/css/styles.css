@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue";
+}
+
+section {
+  width: 500px;
+  margin: auto;
+}
+
+#chatlog {
+  margin: 0;
+  height: 500px;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  font-size: 20px;
+  overflow-y: auto;
+}
+
+input {
+  width: 500px;
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 5px 10px;
+  list-style: none;
+}
+
+.sentByCurrentUser {
+  background-color: lightgrey;
+}

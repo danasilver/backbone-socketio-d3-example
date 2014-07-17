@@ -1,0 +1,23 @@
+{
+  "name": "backbone-socketio-d3-example",
+  "version": "0.0.0",
+  "authors": [
+    "Dana Silver <dsilver@middlebury.edu>"
+  ],
+  "description": "Realtime chat demonstrating Backbone, Socket.io, and D3.",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "https://github.com/danasilver/backbone-socketio-d3-example",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "backbone.iobind": "~0.4.7",
+    "jquery": "~2.1.1",
+    "socket.io-client": "~1.0.6"
+  }
+}
