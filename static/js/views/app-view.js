@@ -17,11 +17,12 @@ var app = app || {};
       this.$message = this.$('#message');
 
       this.listenTo(app.messages, 'add', this.addOne);
+      this.listenTo(app.messages, 'reset', this.addAll);
+      this.listenTo(app.messages, 'all', this.render);
 
-      this.render();
+      app.messages.fetch({ reset: true });
     },
     render: function() {
-      this.addAll();
       return this;
     },
     addOne: function(message) {
@@ -49,7 +50,8 @@ var app = app || {};
     },
     sendOnEnter: function(e) {
       if (e.which === app.ENTER_KEY) {
-        app.messages.create(this.newAttributes());
+        this.addOneFromClient();
+        // app.messages.create(this.newAttributes());
         this.$message.val('');
       }
     }

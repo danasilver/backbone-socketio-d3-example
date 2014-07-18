@@ -6,6 +6,7 @@ var app = app || {};
   app.MessageView = Backbone.View.extend({
     tagName: 'li',
     initialize: function() {
+      this.listenTo(this.model, 'change', this.render);
       this.listenTo(app.app, 'username change', this.render);
     },
     render: function() {

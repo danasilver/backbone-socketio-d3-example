@@ -16,8 +16,7 @@ app.use('/static', express.static(__dirname + '/static'));
 server.listen(process.env.PORT || 3000);
 
 io.sockets.on('connection', function(socket) {
-  socket.on('message:create', function(data) {
-    console.log(data);
+  socket.on('message:create', function(data, callback) {
     db.serialize(function() {
       var stmt = db.prepare('INSERT INTO CHAT (message, sender) '
                            + 'VALUES (?, ?);');
@@ -33,9 +32,9 @@ io.sockets.on('connection', function(socket) {
     });
   });
 
-  socket.on('messages:read', function(data) {
+  socket.on('messages:read', function(data, callback) {
     db.all('SELECT * FROM chat;', function(err, rows) {
-      console.log(rows);
+      callback(null, rows);
     });
   });
 });

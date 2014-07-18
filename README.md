@@ -1,6 +1,6 @@
-## [Backbone](http://backbonejs.org/)-[socket.io](http://socket.io/)-[D3](http://d3js.org/)-example
+## [Backbone](http://backbonejs.org/)-[Socket.io](http://socket.io/)-[D3](http://d3js.org/)-example
 
-### Set up and develop
+### Setup and develop
 
 [npm][1] comes bundled with Node.js v0.6.3 and greater. Install [bower][2] with
 `npm install -g bower`.
