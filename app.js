@@ -16,8 +16,6 @@ app.use('/static', express.static(__dirname + '/static'));
 server.listen(process.env.PORT || 3000);
 
 io.sockets.on('connection', function(socket) {
-  console.log(socket);
-
   socket.on('message:create', function(data) {
     console.log(data);
     db.serialize(function() {
