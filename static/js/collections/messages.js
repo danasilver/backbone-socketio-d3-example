@@ -12,7 +12,6 @@ var app = app || {};
       this.ioBind('create', this.serverCreate, this);
     },
     serverCreate: function(data) {
-
       // Prevent duplicate models from being added
       var exists = this.get(data.id);
       if (!exists) {

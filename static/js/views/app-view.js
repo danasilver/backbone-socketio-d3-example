@@ -23,16 +23,12 @@ var app = app || {};
       app.messages.fetch({ reset: true });
     },
     render: function() {
+      this.$chatlog.animate({scrollTop: this.$chatlog[0].scrollHeight}, 1000);
       return this;
     },
     addOne: function(message) {
       var view = new app.MessageView({ model: message });
       this.$chatlog.append(view.render().el);
-    },
-    addOneFromClient: function() {
-      var Message = app.Message.extend({ noIoBind: true });
-      var _message = new Message(this.newAttributes());
-      _message.save();
     },
     addAll: function() {
       this.$chatlog.html('');
@@ -50,8 +46,7 @@ var app = app || {};
     },
     sendOnEnter: function(e) {
       if (e.which === app.ENTER_KEY) {
-        this.addOneFromClient();
-        // app.messages.create(this.newAttributes());
+        app.messages.create(this.newAttributes());
         this.$message.val('');
       }
     }

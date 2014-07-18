@@ -22,11 +22,11 @@ io.sockets.on('connection', function(socket) {
                            + 'VALUES (?, ?);');
       stmt.run(data.message, data.sender, function() {
         var json = {
-          message: this.lastID,
+          id: this.lastID,
           sender: data.sender,
           message: data.message
         };
-        socket.emit('messages:create', json);
+        callback(null, json);
         socket.broadcast.emit('messages:create', json);
       });
     });
