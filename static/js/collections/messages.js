@@ -22,7 +22,17 @@ var app = app || {};
       }
     },
     messagesPerUser: function() {
-      console.log(this.groupBy(function(message) { return message.get('username'); }))
+      var stats = {},
+          statsArray = [];
+      this.each(function(message) {
+        var sender = message.get('sender')
+        if (Object.prototype.hasOwnProperty.call(stats, sender)) {
+          stats[sender]++;
+        } else {
+          stats[sender] = 1;
+        }
+      });
+      return stats;
     }
   });
 
