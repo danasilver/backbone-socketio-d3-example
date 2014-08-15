@@ -1,4 +1,7 @@
 {
   "name": "Bar Chart",
-  "main": "BarChartView"
+  "main": "BarChartView",
+  "js": [
+    "bar-chart-view.js"
+  ]
 }

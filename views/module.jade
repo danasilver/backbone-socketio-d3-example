@@ -1,0 +1,7 @@
+extend base
+
+block module_css
+
+block module_js
+  each script in scripts
+    script(src=script)

@@ -4,6 +4,9 @@ var express = require('express'),
     io = require('socket.io').listen(server),
     sqlite3 = require('sqlite3').verbose();
 
+var fs = require('fs');
+var path = require('path');
+
 var db = new sqlite3.Database('default.db');
 
 db.run('CREATE TABLE IF NOT EXISTS chat ('
@@ -11,7 +14,10 @@ db.run('CREATE TABLE IF NOT EXISTS chat ('
       + 'message TEXT NOT NULL,'
       + 'sender CHAR(30) NOT NULL);');
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use('/static', express.static(__dirname + '/static'));
+app.use('/modules', express.static(__dirname + '/modules'));
 
 server.listen(process.env.PORT || 3000);
 
@@ -40,5 +46,30 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.get('/', function(req, res) {
-  res.sendfile('static/index.html');
+  var directory = __dirname + '/modules';
+  var modules = [];
+  var scripts = [];
+  var count;
+  fs.readdir(directory, function(err, files) {
+    count = files.length;
+    files.forEach(function(file) {
+      var modulePath = path.resolve(directory, file);
+      fs.stat(modulePath, function(err, stat) {
+        if (stat.isDirectory()) {
+          fs.readFile(path.resolve(modulePath, 'manifest.json'), function(err, data) {
+            if (err) throw err;
+            var manifest = JSON.parse(data);
+            manifest.js.forEach(function(js) {
+              scripts.push('/modules/' + file + '/' + js);
+            });
+            modules.push({ name: manifest.name, main: manifest.main });
+            count--;
+            if (count === 0) {
+              res.render('module', {scripts: scripts, modules: modules});
+            }
+          });
+        }
+      });
+    });
+  });
 });

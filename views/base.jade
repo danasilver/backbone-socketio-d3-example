@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta(chatset='utf-8')
+    title backbone Socket.io
+    link(rel='stylesheet', href='/static/css/styles.css')
+    block module_css
+  body
+    section#chatapp
+      h2 chat app
+      input#username(type='text', name='username',
+        placeholder='Enter your name...', autofocus)
+      ul#chatlog
+      input#message(type='text', name='message',
+        placeholder='Type and press enter to send...')
+    script(src="static/bower_components/jquery/dist/jquery.js")
+    script(src="static/bower_components/underscore/underscore.js")
+    script(src="static/bower_components/socket.io-client/socket.io.js")
+    script(src="static/bower_components/backbone/backbone.js")
+    script(src="static/bower_components/backbone.iobind/dist/backbone.iosync.js")
+    script(src="static/bower_components/backbone.iobind/dist/backbone.iobind.js")
+
+    script window.socket = io();
+
+    script(src="static/js/models/message.js")
+    script(src="static/js/collections/messages.js")
+    script(src="static/js/views/message-view.js")
+    script(src="static/js/views/app-view.js")
+    block module_js
+    script(src="static/js/app.js")
